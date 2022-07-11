@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Travel List</h1>
+
+{% for travel in travels %}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ travel.title }}</span>
+      <p>Location: {{ travel.location }}</p>
+      <p>Description: {{ travel.description }}</p>
+      <p>Rating: {{ travel.rating }}/10</p>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
