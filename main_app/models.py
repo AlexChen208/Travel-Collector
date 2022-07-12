@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.db import models
 from django.core.validators import MaxValueValidator
 from django.core.validators import MinValueValidator
@@ -18,3 +19,6 @@ class Travel(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'travel_id': self.id})
