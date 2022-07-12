@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from . models import Travel
 
 
@@ -11,10 +11,19 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-def travels_index(request):
-    travels = Travel.objects.all()
-    return render(request, 'travels/index.html', { 'travels': travels })
+# def travels_index(request):
+#     travels = Travel.objects.all()
+#     return render(request, 'travels/index.html', { 'travels': travels })
 
-def travels_detail(request, travel_id):
-    travel = Travel.objects.get(id=travel_id)
-    return render(request, 'travels/detail.html', { 'travel': travel })
+# def travels_detail(request, travel_id):
+#     travel = Travel.objects.get(id=travel_id)
+#     return render(request, 'travels/detail.html', { 'travel': travel })
+
+class TravelList(ListView):
+    model = Travel
+    template_name = 'travels/index.html'
+
+# class TravelDetail(DetailView):
+#     model = Travel
+#     template_name = 'travels/detail.html'
+
