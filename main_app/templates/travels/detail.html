@@ -11,6 +11,10 @@
     <p>Description: {{ travel.description }}</p>
     <p>Rating: {{ travel.rating }}/10</p>
   </div>
+  <div class="card-action">
+    <a href="{% url 'travels_update' travel.id %}">Edit</a>
+    <a href="{% url 'travels_delete' travel.id %}">Delete</a>
+  </div>
 </div>
 
 {% endblock %}

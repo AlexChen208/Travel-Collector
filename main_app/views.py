@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from . models import Travel
 
 
@@ -25,4 +25,12 @@ def travels_detail(request, travel_id):
 class TravelCreate(CreateView):
     model = Travel
     fields = '__all__'
-    # success_url = '/cats/'
+    # success_url = '/travels/'
+
+class TravelUpdate(UpdateView):
+    model = Travel
+    fields = '__all__'
+
+class TravelDelete(DeleteView):
+    model = Travel
+    success_url = '/travels/'
