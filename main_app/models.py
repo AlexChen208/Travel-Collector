@@ -22,3 +22,11 @@ class Travel(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'travel_id': self.id})
+
+class Reviews(models.Model):
+    review = models.TextField(max_length=300)
+    
+    travel = models.ForeignKey(Travel, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.review
