@@ -27,11 +27,12 @@
     </form>
     <table class="striped">
       <thead>
-        <tr><th>Reviews</th></tr>
+        <tr><th>Name</th><th>Reviews</th></tr>
       </thead>
       <tbody>
         {% for reviews in travel.reviews_set.all %}
           <tr>
+            <td>{{reviews.name}}</td>
             <td>{{reviews.review}}</td>
           </tr>
         {% endfor %}

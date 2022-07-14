@@ -11,4 +11,6 @@ urlpatterns = [
     path('travels/<int:pk>/update/', views.TravelUpdate.as_view(), name='travels_update'),
     path('travels/<int:pk>/delete/', views.TravelDelete.as_view(), name='travels_delete'),
     path('travels/<int:travel_id>/add_review/', views.add_review, name='add_review'),
+    path('tags/', views.tags_index, name='tags_index'),
+    path('tags/<int:tag_id>/', views.tags_detail, name='tags_detail'),
 ]

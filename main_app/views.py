@@ -1,9 +1,9 @@
-from django.shortcuts import render
-# from django.views.generic.list import ListView
-# from django.views.generic.detail import DetailView
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from . models import Travel
+from django.views.generic import ListView, DetailView
+from . models import Travel, Tag
 from .forms import ReviewsForm
+
 
 
 # Create your views here.
@@ -23,6 +23,19 @@ def travels_detail(request, travel_id):
     return render(request, 'travels/detail.html', {
         'travel': travel, 'review_form': review_form
     })
+
+def add_review(request, travel_id):
+    form = ReviewsForm(request.POST)
+    if form.is_valid():
+        new_review = form.save(commit=False)
+        new_review.travel_id = travel_id
+        new_review.save()
+    return redirect('detail', travel_id=travel_id)
+
+def tags_index(request):
+    tags = Tag.objects.all()
+    return render(request, 'tags/index.html', { 'tags': tags })
+
 
 # class TravelList(ListView):
 #     model = Travel

@@ -5,6 +5,12 @@ from django.core.validators import MinValueValidator
 
 # Create your models here.
 
+class Tag(models.Model):
+    title = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
+
 class Travel(models.Model):
     title = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
@@ -25,6 +31,7 @@ class Travel(models.Model):
 
 class Reviews(models.Model):
     review = models.TextField(max_length=300)
+    name = models.CharField(max_length=100)
     
     travel = models.ForeignKey(Travel, on_delete=models.CASCADE)
 
