@@ -25,6 +25,7 @@ class Travel(models.Model):
             MinValueValidator(0)
         ]
     )
+    tags = models.ManyToManyField(Tag)
 
     def __str__(self):
         return self.title

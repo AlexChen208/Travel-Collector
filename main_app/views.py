@@ -19,9 +19,12 @@ def travels_index(request):
 
 def travels_detail(request, travel_id):
     travel = Travel.objects.get(id=travel_id)
+    id_list = travel.tags.all().values_list('id')
+    travel_tags_doesnt_have = Tag.objects.exclude(id__in=id_list)
     review_form = ReviewsForm()
     return render(request, 'travels/detail.html', {
-        'travel': travel, 'review_form': review_form
+        'travel': travel, 'review_form': review_form,
+        'tags': travel_tags_doesnt_have
     })
 
 def add_review(request, travel_id):
