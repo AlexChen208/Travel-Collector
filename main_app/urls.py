@@ -13,4 +13,5 @@ urlpatterns = [
     path('travels/<int:travel_id>/add_review/', views.add_review, name='add_review'),
     path('tags/', views.tags_index, name='tags_index'),
     path('tags/<int:tag_id>/', views.tags_detail, name='tags_detail'),
+    path('tags/create/', views.TagCreate.as_view(), name='tags_create'),
 ]

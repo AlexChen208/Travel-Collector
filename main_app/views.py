@@ -36,10 +36,12 @@ def tags_index(request):
     tags = Tag.objects.all()
     return render(request, 'tags/index.html', { 'tags': tags })
 
+def tags_detail(request, tag_id):
+    tag = Tag.objects.get(id=tag_id)
+    return render(request, 'tags/detail.html', { 'tag': tag })
 
 # class TravelList(ListView):
 #     model = Travel
-#     template_name = 'travels/index.html'
 
 class TravelCreate(CreateView):
     model = Travel
@@ -53,3 +55,7 @@ class TravelUpdate(UpdateView):
 class TravelDelete(DeleteView):
     model = Travel
     success_url = '/travels/'
+
+class TagCreate(CreateView):
+    model = Tag
+    fields = '__all__'
