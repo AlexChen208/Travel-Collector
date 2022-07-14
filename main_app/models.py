@@ -11,6 +11,9 @@ class Tag(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('tags_detail', kwargs={'tag_id': self.id})
+
 class Travel(models.Model):
     title = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
