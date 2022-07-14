@@ -26,6 +26,10 @@ def travels_detail(request, travel_id):
         'travel': travel, 'review_form': review_form,
         'tags': travel_tags_doesnt_have
     })
+    
+def assoc_tag(request, travel_id, tag_id):
+    Travel.objects.get(id=travel_id).tags.add(tag_id)
+    return redirect('detail', travel_id=travel_id)
 
 def add_review(request, travel_id):
     form = ReviewsForm(request.POST)
@@ -71,3 +75,4 @@ class TagUpdate(UpdateView):
 class TagDelete(DeleteView):
     model = Tag
     success_url = '/tags/'
+
